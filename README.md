@@ -22,15 +22,14 @@
 
 ## Table of Contents
 
-- [disney-clone](#disney-clone)
-  - [Table of Contents](#table-of-contents)
-  - [General Information](#pushpin-general-information)
-  - [Technologies I Used](#hammer-technologies-i-used)
-  - [Features](#sparkles-features)
-    - [Curious to see what is coming next?](#eye-curious-to-see-what-is-coming-next)
-  - [Screenshots](#camera-screenshots)
-  - [Running this project](#rocket-running-this-project)
-    - [Thinking of contributing to the project?](#brain-thinking-of-contributing-to-the-project)
+- [Table of Contents](#table-of-contents)
+- [General Information](#pushpin-general-information)
+- [Technologies I Used](#hammer-technologies-i-used)
+- [Features](#sparkles-features)
+  - [Curious to see what is coming next?](#eye-curious-to-see-what-is-coming-next)
+- [Screenshots](#camera-screenshots)
+- [Running this project](#rocket-running-this-project)
+  - [Thinking of contributing to the project?](#brain-thinking-of-contributing-to-the-project)
 <!-- - [Usage](#question-usage) -->
 - [Project Status](#heavy_check_mark-project-status)
 - [Acknowledgement](#white_heart-acknowledgement)
