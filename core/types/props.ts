@@ -1,5 +1,10 @@
 import { ReactNode } from "react";
 
+// * contracts
+export interface GraphQLClientService {
+  query(query: any, variables?: any): Promise<any>;
+}
+
 // * contexts
 export interface ThemeProviderProps {
   children: ReactNode | ReactNode[];
