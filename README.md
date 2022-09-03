@@ -6,7 +6,7 @@
 
 # disney-clone
 
-[![My Github](https://img.shields.io/badge/Gabe%20Frasz-disney-clone-gold?style=flat-square)](https://github.com/SlyCooper-n)
+[![My Github](https://img.shields.io/badge/Gabe%20Frasz-disney--clone-gold?style=flat-square)](https://github.com/SlyCooper-n)
 [![Repo version](https://img.shields.io/github/package-json/v/slycooper-n/disney-clone?style=flat-square)](https://github.com/SlyCooper-n/disney-clone/blob/main/package.json)
 [![Github issues](https://img.shields.io/github/issues/SlyCooper-n/disney-clone?color=red&style=flat-square)](https://github.com/SlyCooper-n/disney-clone/issues)
 [![GitHub license](https://img.shields.io/github/license/SlyCooper-n/disney-clone?style=flat-square)](https://github.com/SlyCooper-n/disney-clone/blob/main/LICENSE)
