@@ -1,37 +1,45 @@
 import { Head, Html, Main, NextScript } from "next/document";
-  import Script from "next/script";
+import Script from "next/script";
 
-  export default function Document() {
-    return (
-      <Html lang="en">
-        <Head>
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <meta name="description" content="Best Next.js template with bash scripts in the world" />
+export default function Document() {
+  return (
+    <Html lang="en">
+      <Head>
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="description"
+          content="Best Next.js template with bash scripts in the world"
+        />
 
-          <link href="/favicon.ico" rel="shortcut icon" type="image/ico" sizes="16x16" />
+        <link
+          href="/favicon.ico"
+          rel="shortcut icon"
+          type="image/ico"
+          sizes="16x16"
+        />
 
-          <meta name="theme-color" content="#6419e6" />
+        <meta name="theme-color" content="#6419e6" />
 
-          <Script
-            crossOrigin="anonymous"
-            strategy="beforeInteractive"
-            src="https://polyfill.io/v3/polyfill.min.js"
-          />
+        <Script
+          crossOrigin="anonymous"
+          strategy="beforeInteractive"
+          src="https://polyfill.io/v3/polyfill.min.js"
+        />
 
-          {/* 
+        {/*
             <meta name="application-name" content="Next.js template with bash scripts" />
             <meta name="apple-mobile-web-app-capable" content="yes" />
             <meta name="apple-mobile-web-app-status-bar-style" content="default" />
             <meta name="apple-mobile-web-app-status-bar" content="#6419e6" />
             <meta name="apple-mobile-web-app-title" content="Next.js template with bash scripts" />
-            
+
             <meta name="format-detection" content="telephone=no" />
             <meta name="mobile-web-app-capable" content="yes" />
             <meta name="msapplication-config" content="/icons/browserconfig.xml" />
             <meta name="msapplication-TileColor" content="#6419e6" />
             <meta name="msapplication-tap-highlight" content="no" />
 
-            // icons 
+            // icons
             <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
             <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
             <link rel="manifest" href="/manifest.json" />
@@ -67,14 +75,13 @@ import { Head, Html, Main, NextScript } from "next/document";
             <link rel="apple-touch-startup-image" href="/images/apple_splash_750.png" sizes="750x1334" />
             <link rel="apple-touch-startup-image" href="/images/apple_splash_640.png" sizes="640x1136" />
           */}
-        </Head>
+      </Head>
 
-        <body>
-          <Main />
+      <body>
+        <Main />
 
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
-  
+        <NextScript />
+      </body>
+    </Html>
+  );
+}

@@ -1,12 +1,11 @@
 {
-        "extends": [
-          "next/core-web-vitals",
-          "plugin:testing-library/react",
-          "plugin:jest-dom/recommended"
-        ],
-        "plugins": ["testing-library", "jest-dom"],
-        "rules": {
-          "testing-library/await-async-utils": "off"
-        }
-      }
-      
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended"
+  ],
+  "plugins": ["testing-library", "jest-dom"],
+  "rules": {
+    "testing-library/await-async-utils": "off"
+  }
+}

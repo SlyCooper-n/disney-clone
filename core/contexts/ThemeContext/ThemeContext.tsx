@@ -1,32 +1,31 @@
 import { ThemeContextValue, ThemeProviderProps } from "@core/types";
-    import { createContext, useState } from "react";
+import { createContext, useState } from "react";
 
-    export const ThemeContext = createContext({} as ThemeContextValue);
+export const ThemeContext = createContext({} as ThemeContextValue);
 
-    export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-      const [appTheme, setAppTheme] = useState<"light" | "dark">("dark");
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
+  const [appTheme, setAppTheme] = useState<"light" | "dark">("dark");
 
-      const toggleTheme = () => {
-        setAppTheme(appTheme === "light" ? "dark" : "light");
-      };
+  const toggleTheme = () => {
+    setAppTheme(appTheme === "light" ? "dark" : "light");
+  };
 
-      const setAppThemeToLight = () => {
-        setAppTheme("light");
-      };
+  const setAppThemeToLight = () => {
+    setAppTheme("light");
+  };
 
-      const setAppThemeToDark = () => {
-        setAppTheme("dark");
-      };
+  const setAppThemeToDark = () => {
+    setAppTheme("dark");
+  };
 
-      const themeValue = {
-        appTheme,
-        toggleTheme,
-        setAppThemeToLight,
-        setAppThemeToDark,
-      };
+  const themeValue = {
+    appTheme,
+    toggleTheme,
+    setAppThemeToLight,
+    setAppThemeToDark,
+  };
 
-      return (
-        <ThemeContext.Provider value={themeValue}>{children}</ThemeContext.Provider>
-      );
-    };
-    
+  return (
+    <ThemeContext.Provider value={themeValue}>{children}</ThemeContext.Provider>
+  );
+};

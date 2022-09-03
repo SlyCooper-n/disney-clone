@@ -1,14 +1,13 @@
 // * contexts
-    export type ThemeContextValue = {
-      appTheme: "light" | "dark";
-      toggleTheme: () => void;
-      setAppThemeToLight: () => void;
-      setAppThemeToDark: () => void;
-    };
+export type ThemeContextValue = {
+  appTheme: "light" | "dark";
+  toggleTheme: () => void;
+  setAppThemeToLight: () => void;
+  setAppThemeToDark: () => void;
+};
 
-    // * layout components
+// * layout components
 
-    // * module components
+// * module components
 
-    // * widget components
-    
+// * widget components
