@@ -1,7 +1,7 @@
 import { PageContainer } from "@components/layouts";
 import type { NextPage } from "next";
 
-const Home: NextPage = () => {
+const Index: NextPage = () => {
   return (
     <PageContainer center>
       <main className="prose">
@@ -13,4 +13,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Index;
