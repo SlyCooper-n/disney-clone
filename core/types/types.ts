@@ -17,6 +17,37 @@ export type HomepageQuery = {
   };
 };
 
+export type BrandPageQuery = {
+  brand: {
+    backgroundVideo: {
+      url: string;
+    };
+    backgroundImage: {
+      url: string;
+    };
+  };
+};
+
+export type VideosByTypeQuery = {
+  videos: {
+    id: string;
+    videoInfo: {
+      thumbnails: {
+        horizontal: {
+          url: string;
+        };
+        vertical: {
+          url: string;
+        };
+      };
+      slug: string;
+      genre: string[];
+    };
+  }[];
+};
+
+export type OriginalsVideosQuery = VideosByTypeQuery;
+
 // * contexts
 export type ThemeContextValue = {
   appTheme: "light" | "dark";
