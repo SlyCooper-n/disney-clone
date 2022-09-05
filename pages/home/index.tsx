@@ -1,10 +1,15 @@
+import { PageContainer } from "@components/layouts";
 import { HOMEPAGE } from "@core/graphql";
 import { client } from "@core/services";
 import { HomepageQuery } from "@core/types";
 import type { InferGetStaticPropsType } from "next";
 
 const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return <div />;
+  return (
+    <PageContainer>
+      <h1>Hello World</h1>
+    </PageContainer>
+  );
 };
 
 export default Home;
