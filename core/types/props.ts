@@ -27,3 +27,7 @@ export interface PageContainerProps {
 export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: ReactNode | ReactNode[];
 }
+export interface LoadingProps {
+  page?: boolean;
+  size?: number;
+}
