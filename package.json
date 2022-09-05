@@ -17,6 +17,7 @@
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "daisyui": "^2.24.0",
+    "firebase": "^9.9.4",
     "framer-motion": "^7.2.1",
     "graphql": "^16.6.0",
     "lottie-react": "^2.3.1",
