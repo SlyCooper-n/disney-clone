@@ -6,6 +6,9 @@ export interface GraphQLClientService {
 }
 
 // * contexts
+export interface AuthContextProps {
+  children: ReactNode | ReactNode[];
+}
 export interface ThemeProviderProps {
   children: ReactNode | ReactNode[];
 }

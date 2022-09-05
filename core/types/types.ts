@@ -35,7 +35,6 @@ export type VideoByIDQuery = {
     };
   };
 };
-
 export type VideoBySlugQuery = {
   videos: {
     videoInfo: {
@@ -72,6 +71,13 @@ export type VideosByTypeQuery = {
 };
 
 // * contexts
+export type Account = {
+  id: string;
+  name: string | null;
+  email: string | null;
+  signOut: () => Promise<void>;
+};
+export type AuthContextValue = {};
 export type ThemeContextValue = {
   appTheme: "light" | "dark";
   toggleTheme: () => void;
