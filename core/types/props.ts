@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
 // * contracts
 export interface GraphQLClientService {
@@ -24,3 +24,6 @@ export interface PageContainerProps {
 // * module components
 
 // * widget components
+export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+  children: ReactNode | ReactNode[];
+}
