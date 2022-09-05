@@ -86,3 +86,32 @@ export const ORIGINALS_VIDEOS = gql`
     }
   }
 `;
+
+export const VIDEO_BY_SLUG = gql`
+  query Video($videoType: VideoType!, $slug: String!) {
+    videos(where: { videoType: $videoType, videoInfo: { slug: $slug } }) {
+      videoInfo {
+        title
+        description
+        releaseYear
+        genre
+        banner {
+          url
+        }
+        videoLogo {
+          url
+        }
+      }
+    }
+  }
+`;
+
+export const VIDEO_BY_ID = gql`
+  query Videos($id: ID!) {
+    video(where: { id: $id }) {
+      mp4 {
+        url
+      }
+    }
+  }
+`;

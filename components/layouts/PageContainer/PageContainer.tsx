@@ -1,6 +1,7 @@
 import { useTheme } from "@core/hooks";
 import { PageContainerProps } from "@core/types";
 import Head from "next/head";
+import { Toaster } from "react-hot-toast";
 
 export const PageContainer = ({
   headTitle,
@@ -25,6 +26,8 @@ export const PageContainer = ({
       >
         {children}
       </div>
+
+      <Toaster />
     </>
   );
 };
