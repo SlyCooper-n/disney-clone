@@ -1,1 +1,1 @@
-export * from "./"
+export * as logo from "./logo.png";
