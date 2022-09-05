@@ -1,3 +1,5 @@
+import { AuthProvider } from "firebase/auth";
+
 // * queries response
 export type BrandPageQuery = {
   brand: {
@@ -77,7 +79,12 @@ export type Account = {
   email: string | null;
   signOut: () => Promise<void>;
 };
-export type AuthContextValue = {};
+export type AuthContextValue = {
+  account: Account | null;
+  loading: boolean;
+  signIn: (provider: AuthProvider) => Promise<void>;
+  signUserOut: () => Promise<void>;
+};
 export type ThemeContextValue = {
   appTheme: "light" | "dark";
   toggleTheme: () => void;
