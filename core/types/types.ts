@@ -53,7 +53,6 @@ export type VideoBySlugQuery = {
     };
   }[];
 };
-
 export type VideosByTypeQuery = {
   videos: {
     id: string;
@@ -91,9 +90,3 @@ export type ThemeContextValue = {
   setAppThemeToLight: () => void;
   setAppThemeToDark: () => void;
 };
-
-// * layout components
-
-// * module components
-
-// * widget components
