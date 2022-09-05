@@ -1,4 +1,14 @@
 // * queries response
+export type BrandPageQuery = {
+  brand: {
+    backgroundVideo: {
+      url: string;
+    };
+    backgroundImage: {
+      url: string;
+    };
+  };
+};
 export type HomepageQuery = {
   page: {
     homepage: {
@@ -16,16 +26,31 @@ export type HomepageQuery = {
     };
   };
 };
+export type OriginalsVideosQuery = VideosByTypeQuery;
 
-export type BrandPageQuery = {
-  brand: {
-    backgroundVideo: {
-      url: string;
-    };
-    backgroundImage: {
+export type VideoByIDQuery = {
+  video: {
+    mp4: {
       url: string;
     };
   };
+};
+
+export type VideoBySlugQuery = {
+  videos: {
+    videoInfo: {
+      title: string;
+      description: string;
+      releaseYear: number;
+      genre: string[];
+      banner: {
+        url: string;
+      };
+      videoLogo: {
+        url: string;
+      };
+    };
+  }[];
 };
 
 export type VideosByTypeQuery = {
@@ -45,8 +70,6 @@ export type VideosByTypeQuery = {
     };
   }[];
 };
-
-export type OriginalsVideosQuery = VideosByTypeQuery;
 
 // * contexts
 export type ThemeContextValue = {
