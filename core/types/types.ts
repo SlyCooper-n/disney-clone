@@ -30,6 +30,16 @@ export type HomepageQuery = {
 };
 export type OriginalsVideosQuery = VideosByTypeQuery;
 
+export type ProfileQuery = {
+  profile: {
+    id: string;
+    username: string;
+    avatarUrl: string;
+  };
+};
+export type ProfilesQuery = {
+  profiles: ProfileQuery["profile"][];
+};
 export type VideoByIDQuery = {
   video: {
     mp4: {
@@ -76,6 +86,7 @@ export type Account = {
   id: string;
   name: string | null;
   email: string | null;
+  avatar: string | null;
   signOut: () => Promise<void>;
 };
 export type AuthContextValue = {
@@ -83,6 +94,10 @@ export type AuthContextValue = {
   loading: boolean;
   signIn: (provider: AuthProvider) => Promise<void>;
   signUserOut: () => Promise<void>;
+};
+export type ProfileContextValue = {
+  selectedProfile: ProfileQuery["profile"] | null;
+  selectProfile: (profile: ProfileQuery["profile"]) => void;
 };
 export type ThemeContextValue = {
   appTheme: "light" | "dark";
