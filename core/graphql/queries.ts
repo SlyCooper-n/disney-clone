@@ -115,3 +115,22 @@ export const VIDEO_BY_ID = gql`
     }
   }
 `;
+
+export const PROFILES = gql`
+  query Profiles($firestoreId: String!) {
+    profiles(where: { account: { firestoreId: $firestoreId } }) {
+      id
+      username
+      avatarUrl
+    }
+  }
+`;
+
+export const PROFILE = gql`
+  query Profile($id: ID!) {
+    profile(where: { id: $id }) {
+      username
+      avatarUrl
+    }
+  }
+`;
