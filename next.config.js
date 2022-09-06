@@ -14,6 +14,6 @@ module.exports = withPWA({
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["media.graphassets.com"],
+    domains: ["media.graphassets.com", "lh3.googleusercontent.com"],
   },
 });

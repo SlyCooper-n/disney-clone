@@ -5,7 +5,7 @@ import { HTMLAttributes } from "react";
 export const Logo = ({ ...rest }: HTMLAttributes<HTMLDivElement>) => {
   return (
     <div {...rest}>
-      <Image src={logo} alt="Disney+ clone logo" layout="responsive" />
+      <Image src={logo} alt="Disney+ clone logo" layout="responsive" priority />
     </div>
   );
 };

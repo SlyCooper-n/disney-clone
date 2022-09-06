@@ -1,4 +1,5 @@
 import { ApolloProvider } from "@apollo/client";
+import { ProfileProvider } from "@core/contexts";
 import { FirebaseAuthProvider } from "@core/contexts/AuthContext";
 import { client } from "@core/services";
 import type { AppProps } from "next/app";
@@ -8,7 +9,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={client}>
       <FirebaseAuthProvider>
-        <Component {...pageProps} />
+        <ProfileProvider>
+          <Component {...pageProps} />
+        </ProfileProvider>
       </FirebaseAuthProvider>
     </ApolloProvider>
   );

@@ -9,6 +9,9 @@ export interface GraphQLClientService {
 export interface AuthContextProps {
   children: ReactNode | ReactNode[];
 }
+export interface ProfileProviderProps {
+  children: ReactNode | ReactNode[];
+}
 export interface ThemeProviderProps {
   children: ReactNode | ReactNode[];
 }
@@ -24,6 +27,15 @@ export interface PageContainerProps {
 // * module components
 
 // * widget components
+export interface AvatarProps {
+  className: string;
+  src: string;
+  placeholder: string;
+}
 export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: ReactNode | ReactNode[];
+}
+export interface LoadingProps {
+  page?: boolean;
+  size?: number;
 }

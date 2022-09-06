@@ -1,25 +1,49 @@
 import { PageContainer } from "@components/layouts";
 import { VisuallyHidden } from "@components/radixUI/";
-import { Button, Logo } from "@components/widgets";
+import { Button, Loading, Logo } from "@components/widgets";
 import { useAuth } from "@core/hooks";
+import { api, myGetDoc, mySetDoc } from "@core/services";
 import { GoogleAuthProvider } from "firebase/auth";
 import type { NextPage } from "next";
-import { CircleNotch, GoogleLogo } from "phosphor-react";
+import { useRouter } from "next/router";
+import { GoogleLogo } from "phosphor-react";
+import { useEffect } from "react";
 
 const Index: NextPage = () => {
-  const { account, loading, signIn, signUserOut } = useAuth();
+  const { account, loading, signIn } = useAuth();
+  const router = useRouter();
 
-  function signInWithGoogle() {
-    signIn(new GoogleAuthProvider());
+  useEffect(() => {
+    // verify if user is new
+    // if so, create a document on Firestore
+    // and an account on Hygraph
+    async function verifyNewUser() {
+      if (!account) return;
+
+      const docSnap = await myGetDoc(`account/${account.id}`);
+
+      if (!docSnap.exists()) {
+        await mySetDoc(`account/${account.id}`, {
+          profiles: [account.name],
+        });
+
+        await api.post("/api/accounts", {
+          id: account.id,
+          username: account.name,
+          avatar: account.avatar,
+        });
+      }
+    }
+    verifyNewUser();
+  }, [account]);
+
+  async function signInWithGoogle() {
+    await signIn(new GoogleAuthProvider());
+
+    router.push("/profiles");
   }
 
-  if (loading) {
-    return (
-      <div className="w-screen h-screen flex justify-center items-center">
-        <CircleNotch size={32} className="animate-spin text-blue-500" />
-      </div>
-    );
-  }
+  if (loading) return <Loading page />;
 
   return (
     <PageContainer>
@@ -30,29 +54,15 @@ const Index: NextPage = () => {
 
         <Logo className="w-[200px] mx-auto" />
 
-        {/* no user */}
-        {!account && (
-          <>
-            <h2 className="mt-12 mb-8 text-3xl">Login</h2>
+        <h2 className="mt-12 mb-8 text-3xl">Login</h2>
 
-            <Button
-              onClick={signInWithGoogle}
-              className="mx-auto flex items-center gap-4 bg-white hover:brightness-75 hover:bg-white text-black ring-white"
-            >
-              <GoogleLogo size={24} weight="bold" />
-              Enter with Google
-            </Button>
-          </>
-        )}
-
-        {/* user logged in */}
-        {account && (
-          <>
-            <h2>Who&apos;s watching?</h2>
-
-            <Button onClick={signUserOut}>Log out</Button>
-          </>
-        )}
+        <Button
+          onClick={signInWithGoogle}
+          className="mx-auto flex items-center gap-4 bg-white hover:brightness-75 hover:bg-white text-black ring-white"
+        >
+          <GoogleLogo size={24} weight="bold" />
+          Enter with Google
+        </Button>
       </main>
     </PageContainer>
   );
