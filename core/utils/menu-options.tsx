@@ -10,39 +10,37 @@ import {
 export const menuOptions = [
   {
     url: "/home",
-    icon: <HouseSimple size="auto" weight="fill" className="w-6 lg:w-[18px]" />,
+    icon: <HouseSimple size={26} weight="fill" />,
     name: "Home",
     isMobile: true,
   },
   {
     url: "/home",
-    icon: (
-      <MagnifyingGlass size="auto" weight="bold" className="w-6 lg:w-[18px]" />
-    ),
+    icon: <MagnifyingGlass size={26} weight="bold" />,
     name: "Search",
     isMobile: true,
   },
   {
     url: "/watchlist",
-    icon: <Plus size="auto" weight="bold" className="w-6 lg:w-[18px]" />,
+    icon: <Plus size={26} weight="bold" />,
     name: "Watchlist",
     isMobile: true,
   },
   {
     url: "/originals",
-    icon: <Star size="auto" weight="fill" className="w-6 lg:w-[18px]" />,
+    icon: <Star size={26} weight="fill" />,
     name: "Originals",
     isMobile: false,
   },
   {
     url: "/movies",
-    icon: <FilmSlate size="auto" weight="bold" className="w-6 lg:w-[18px]" />,
+    icon: <FilmSlate size={26} weight="bold" />,
     name: "Movies",
     isMobile: false,
   },
   {
     url: "/series",
-    icon: <Television size="auto" weight="fill" className="w-6 lg:w-[18px]" />,
+    icon: <Television size={26} weight="fill" />,
     name: "Series",
     isMobile: false,
   },
