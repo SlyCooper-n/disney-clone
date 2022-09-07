@@ -33,7 +33,7 @@ const Profiles = () => {
   if (error) return <div>Error</div>;
 
   return (
-    <PageContainer headTitle="Disney+ clone | Select profile">
+    <PageContainer headTitle="Disney+ clone | Select profile" navbar={false}>
       <main className="pt-12 text-center">
         <VisuallyHidden asChild>
           <h1>Disney+ clone</h1>
