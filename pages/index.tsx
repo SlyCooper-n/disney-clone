@@ -46,7 +46,7 @@ const Index: NextPage = () => {
   if (loading) return <Loading page />;
 
   return (
-    <PageContainer>
+    <PageContainer headTitle="Disney+ clone | Login">
       <main className="pt-12 text-center">
         <VisuallyHidden asChild>
           <h1>Disney+ clone</h1>
