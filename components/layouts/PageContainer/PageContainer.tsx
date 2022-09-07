@@ -16,7 +16,9 @@ export const PageContainer = (props: PageContainerProps) => {
 
       <div
         data-theme={appTheme}
-        className={`container relative w-screen min-h-screen flex flex-col ${
+        className={`container relative w-screen ${
+          props.navbar ?? true ? "lg:pt-24" : ""
+        } min-h-screen flex flex-col ${
           props.center && "justify-center items-center"
         }`}
       >
