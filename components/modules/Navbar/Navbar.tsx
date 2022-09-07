@@ -7,7 +7,6 @@ import { useRef } from "react";
 
 export const Navbar = () => {
   const { selectedProfile } = useProfile();
-
   const navbarRef = useRef<HTMLDivElement>(null);
 
   return (
