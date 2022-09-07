@@ -7,7 +7,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { destroyCookie, setCookie } from "nookies";
+import { setCookie } from "nookies";
 import { createContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -23,8 +23,6 @@ export const FirebaseAuthProvider = ({ children }: AuthContextProps) => {
       if (!user) {
         setAccount(null);
         setLoading(false);
-
-        destroyCookie(null, "disney_clone_account_id");
         return;
       }
 
@@ -38,8 +36,6 @@ export const FirebaseAuthProvider = ({ children }: AuthContextProps) => {
         signOut,
       });
       setLoading(false);
-
-      setCookie(null, "disney_clone_account_id", uid);
     });
 
     return () => unsubscribe();
@@ -48,7 +44,10 @@ export const FirebaseAuthProvider = ({ children }: AuthContextProps) => {
   async function signIn(provider: AuthProvider) {
     try {
       //
-      await signInWithPopup(auth, provider);
+      const {
+        user: { uid },
+      } = await signInWithPopup(auth, provider);
+      setCookie(null, "disney_clone_account_id", uid);
       toast.success("User logged in!");
       //
     } catch (error) {
