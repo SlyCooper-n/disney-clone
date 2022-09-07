@@ -21,6 +21,7 @@ export interface PageContainerProps {
   headTitle?: string;
   description?: string;
   center?: boolean;
+  navbar?: boolean;
   children: ReactNode | ReactNode[];
 }
 
@@ -28,7 +29,7 @@ export interface PageContainerProps {
 
 // * widget components
 export interface AvatarProps {
-  className: string;
+  className?: string;
   src: string;
   placeholder: string;
 }
