@@ -1,11 +1,11 @@
 import { useQuery } from "@apollo/client";
 import { AuthGuard } from "@components/guards";
 import { PageContainer } from "@components/layouts";
-import { Avatar, VisuallyHidden } from "@components/radixUI";
+import { Avatar, Dialog, VisuallyHidden } from "@components/radixUI";
 import { Loading, Logo } from "@components/widgets";
 import { PROFILES } from "@core/graphql";
-import { useAuth, useProfile } from "@core/hooks";
-import { ProfileQuery, ProfilesQuery } from "@core/types";
+import { useAuth, useDialog, useProfile } from "@core/hooks";
+import { Profile, ProfilesQuery } from "@core/types";
 import { useRouter } from "next/router";
 import { parseCookies } from "nookies";
 import { PlusCircle } from "phosphor-react";
@@ -13,6 +13,7 @@ import { PlusCircle } from "phosphor-react";
 const Profiles = () => {
   const { loading } = useAuth();
   const { selectProfile } = useProfile();
+  const { dialogOpen, toggleDialog, addProfile } = useDialog();
   const {
     data,
     loading: queryLoading,
@@ -24,7 +25,7 @@ const Profiles = () => {
   });
   const router = useRouter();
 
-  function chooseProfile(profile: ProfileQuery["profile"]) {
+  function chooseProfile(profile: Profile) {
     selectProfile(profile);
 
     router.push("/home");
@@ -71,13 +72,30 @@ const Profiles = () => {
 
           {data?.profiles.length! < 4 && (
             <div className="flex flex-col items-center gap-4">
-              <button className="flex flex-col items-center">
-                <PlusCircle
-                  size={"auto"}
-                  weight="fill"
-                  className="w-16 sm:w-24 lg:w-32 rounded-full hover:scale-105 hover:brightness-50 transition-all duration-300"
-                />
-              </button>
+              <Dialog
+                open={dialogOpen}
+                toggleDialog={toggleDialog}
+                title="Add profile"
+                description="Create a new profile here. Click add when you're done."
+                labelFields={[
+                  {
+                    label: "Username",
+                    inputName: "username",
+                    required: true,
+                  },
+                  { label: "Avatar url", inputName: "avatarUrl" },
+                ]}
+                submitButtonText="Add"
+                onSubmit={addProfile}
+              >
+                <button className="flex flex-col items-center">
+                  <PlusCircle
+                    size={"auto"}
+                    weight="fill"
+                    className="w-16 sm:w-24 lg:w-32 rounded-full hover:scale-105 hover:brightness-50 transition-all duration-300"
+                  />
+                </button>
+              </Dialog>
 
               <span className="sm:text-xl font-semibold">Add profile</span>
             </div>
