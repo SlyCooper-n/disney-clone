@@ -27,7 +27,7 @@ const Index: NextPage = () => {
           profiles: [account.name],
         });
 
-        await api.post("/api/accounts", {
+        await api.post("/accounts", {
           id: account.id,
           username: account.name,
           avatar: account.avatar,
