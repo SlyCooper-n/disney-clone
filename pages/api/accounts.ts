@@ -1,8 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import {
-  CREATE_ACCOUNT,
-  PUBLISH_INITIAL_ACCOUNT,
-} from "@core/graphql/mutations";
+import { CREATE_ACCOUNT, PUBLISH_INITIAL_ACCOUNT } from "@core/graphql";
 import { client } from "@core/services";
 import type { NextApiRequest, NextApiResponse } from "next";
 
@@ -17,20 +14,21 @@ type ErrorMessage = {
 type BodyParams = {
   id: string;
   username: string;
-  avatar: string | null;
+  avatar?: string;
 };
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<SuccessMessage | ErrorMessage>
 ) {
-  if (req.method !== "POST")
+  if (req.method !== "POST") {
     return res.status(400).json({ message: "Method not allowed" });
+  }
 
   const { id, username, avatar } = req.body as BodyParams;
 
-  if (!id || !username || !avatar) {
-    res.status(400).json({ message: "Missing body params" });
+  if (!id || !username) {
+    return res.status(400).json({ message: "Missing body params" });
   }
 
   try {
@@ -40,7 +38,7 @@ export default async function handler(
       variables: {
         firestoreId: id,
         profileUsername: username,
-        avatarUrl: avatar,
+        avatarUrl: avatar ?? null,
       },
     });
 
