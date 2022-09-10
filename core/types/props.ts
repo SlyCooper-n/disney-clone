@@ -30,10 +30,21 @@ export interface PageContainerProps {
 // * widget components
 export interface AvatarProps {
   className?: string;
-  src: string;
+  src: string | null;
   placeholder: string;
 }
 export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+  children: ReactNode | ReactNode[];
+}
+export interface DialogProps {
+  open: boolean;
+  toggleDialog: () => void;
+  title: string;
+  description: string;
+  labelFields: { label: string; inputName: string; required?: boolean }[];
+  submitButtonText?: string;
+  onSubmit?: (inputObject: Record<string, FormDataEntryValue>) => Promise<void>;
+  refetchData?: () => Promise<void>;
   children: ReactNode | ReactNode[];
 }
 export interface LoadingProps {
