@@ -8,7 +8,12 @@ export const HOMEPAGE = gql`
           videos {
             id
             videoInfo {
+              title
               banner {
+                url
+              }
+              slug
+              videoLogo {
                 url
               }
               brand {
