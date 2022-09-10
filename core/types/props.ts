@@ -1,4 +1,5 @@
 import { HTMLAttributes, ReactNode } from "react";
+import { Slide } from "./types";
 
 // * contracts
 export interface GraphQLClientService {
@@ -33,6 +34,9 @@ export interface AvatarProps {
   src: string | null;
   placeholder: string;
 }
+export interface BannerSwiperProps {
+  slides: Slide[];
+}
 export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: ReactNode | ReactNode[];
 }
@@ -50,4 +54,7 @@ export interface DialogProps {
 export interface LoadingProps {
   page?: boolean;
   size?: number;
+}
+export interface SliderCaretProps {
+  variant: "right" | "left";
 }
