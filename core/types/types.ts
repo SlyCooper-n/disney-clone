@@ -14,7 +14,26 @@ export type BrandPageQuery = {
 export type HomepageQuery = {
   page: {
     homepage: {
-      slider: null;
+      slider: {
+        videos: {
+          id: string;
+          videoInfo: {
+            title: string;
+            banner: {
+              url: string;
+            };
+            slug: string;
+            videoLogo: {
+              url: string;
+            };
+            brand: {
+              brandLogo: {
+                url: string;
+              };
+            };
+          };
+        }[];
+      };
       brands: {
         id: string;
         slug: string;
@@ -114,4 +133,10 @@ export type Profile = {
   id: string;
   username: string;
   avatarUrl: string | null;
+};
+export type Slide = {
+  id: string;
+  imageUrl: string;
+  title: string;
+  slug: string;
 };
