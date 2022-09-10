@@ -5,9 +5,9 @@ export const Avatar = ({ src, placeholder, className }: AvatarProps) => {
   return (
     <Rx.Root>
       <Rx.Image
-        src={src}
+        src={src ?? ""}
         alt="user avatar"
-        className={`rounded-full ${className}`}
+        className={`aspect-square object-cover rounded-full ${className}`}
       />
 
       <Rx.Fallback className="avatar placeholder">
