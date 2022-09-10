@@ -1,7 +1,7 @@
 import {
+  Profile,
   ProfileContextValue,
   ProfileProviderProps,
-  ProfileQuery,
 } from "@core/types";
 import { useRouter } from "next/router";
 import { createContext, useEffect, useState } from "react";
@@ -9,9 +9,7 @@ import { createContext, useEffect, useState } from "react";
 export const ProfileContext = createContext({} as ProfileContextValue);
 
 export const ProfileProvider = ({ children }: ProfileProviderProps) => {
-  const [selectedProfile, setSelectedProfile] = useState<
-    ProfileQuery["profile"] | null
-  >(null);
+  const [selectedProfile, setSelectedProfile] = useState<Profile | null>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -20,7 +18,7 @@ export const ProfileProvider = ({ children }: ProfileProviderProps) => {
     }
   }, [selectedProfile, router]);
 
-  function selectProfile(profile: ProfileQuery["profile"]) {
+  function selectProfile(profile: Profile) {
     setSelectedProfile(profile);
   }
 
