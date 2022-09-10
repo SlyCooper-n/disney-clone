@@ -31,11 +31,7 @@ export type HomepageQuery = {
 export type OriginalsVideosQuery = VideosByTypeQuery;
 
 export type ProfileQuery = {
-  profile: {
-    id: string;
-    username: string;
-    avatarUrl: string;
-  };
+  profile: Profile;
 };
 export type ProfilesQuery = {
   profiles: ProfileQuery["profile"][];
@@ -81,6 +77,13 @@ export type VideosByTypeQuery = {
   }[];
 };
 
+// * mutations response
+export type AddProfileMutation = {
+  updateAccount: {
+    profiles: Profile[];
+  };
+};
+
 // * contexts
 export type Account = {
   id: string;
@@ -96,12 +99,19 @@ export type AuthContextValue = {
   signUserOut: () => Promise<void>;
 };
 export type ProfileContextValue = {
-  selectedProfile: ProfileQuery["profile"] | null;
-  selectProfile: (profile: ProfileQuery["profile"]) => void;
+  selectedProfile: Profile | null;
+  selectProfile: (profile: Profile) => void;
 };
 export type ThemeContextValue = {
   appTheme: "light" | "dark";
   toggleTheme: () => void;
   setAppThemeToLight: () => void;
   setAppThemeToDark: () => void;
+};
+
+// * entities
+export type Profile = {
+  id: string;
+  username: string;
+  avatarUrl: string | null;
 };
