@@ -13,7 +13,11 @@ export const ProfileProvider = ({ children }: ProfileProviderProps) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (selectedProfile === null && !router.pathname.includes("/profiles")) {
+    if (
+      selectedProfile === null &&
+      router.pathname !== "/profiles" &&
+      router.pathname !== "/"
+    ) {
       router.push("/profiles");
     }
   }, [selectedProfile, router]);
