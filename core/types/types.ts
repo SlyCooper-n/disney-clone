@@ -138,5 +138,6 @@ export type Slide = {
   id: string;
   imageUrl: string;
   title: string;
+  logo: string;
   slug: string;
 };
