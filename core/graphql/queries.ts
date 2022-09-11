@@ -28,7 +28,7 @@ export const HOMEPAGE = gql`
         showcase {
           id
           title
-          videos {
+          videos(first: 15) {
             id
             videoType
             videoInfo {
