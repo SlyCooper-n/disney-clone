@@ -7,10 +7,18 @@ import { HomepageQuery } from "@core/types";
 import type { InferGetStaticPropsType } from "next";
 
 const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const slides = data.page.homepage.slider.videos.map(({ id, videoInfo }) => ({
+    id,
+    imageUrl: videoInfo.banner.url,
+    title: videoInfo.title,
+    slug: videoInfo.slug,
+    logo: videoInfo.videoLogo.url,
+  }));
+
   return (
     <AuthGuard>
       <PageContainer headTitle="Disney+ clone | Home">
-        <BannerSwiper />
+        <BannerSwiper slides={slides} />
       </PageContainer>
     </AuthGuard>
   );
