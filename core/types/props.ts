@@ -1,5 +1,5 @@
 import { HTMLAttributes, ReactNode } from "react";
-import { Slide } from "./types";
+import { Brand, Slide, Video, VideoList } from "./types";
 
 // * contracts
 export interface GraphQLClientService {
@@ -27,6 +27,12 @@ export interface PageContainerProps {
 }
 
 // * module components
+export interface BrandsProps {
+  brands: Brand[];
+}
+export interface ShowcaseProps {
+  videosList: VideoList[];
+}
 
 // * widget components
 export interface AvatarProps {
@@ -39,6 +45,12 @@ export interface BannerSwiperProps {
 }
 export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: ReactNode | ReactNode[];
+}
+export interface CardProps {
+  variant?: "brand" | "video";
+  brandData?: Brand;
+  videoData?: Video;
+  className?: string;
 }
 export interface DialogProps {
   open: boolean;
@@ -57,4 +69,5 @@ export interface LoadingProps {
 }
 export interface SliderCaretProps {
   variant: "right" | "left";
+  className: string;
 }
