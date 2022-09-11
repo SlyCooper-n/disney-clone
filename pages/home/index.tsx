@@ -1,10 +1,12 @@
 import { AuthGuard } from "@components/guards/AuthGuard/AuthGuard";
 import { PageContainer } from "@components/layouts";
-import { BannerSwiper } from "@components/widgets";
+import { Brands, Showcase } from "@components/modules";
+import { BannerSwiper, Logo } from "@components/widgets";
 import { HOMEPAGE } from "@core/graphql";
 import { client } from "@core/services";
-import { HomepageQuery, Slide } from "@core/types";
+import { Brand, HomepageQuery, Slide, Video, VideoList } from "@core/types";
 import type { InferGetStaticPropsType } from "next";
+import Link from "next/link";
 
 const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const slides = data.page.homepage.slider.videos.map(
@@ -18,11 +20,47 @@ const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
         type: videoType === "movie" ? "movies" : "series",
       } as Slide)
   );
+  const brands = data.page.homepage.brands.map(
+    ({ id, brandLogo, backgroundGif, slug }) =>
+      ({
+        id,
+        logo: brandLogo.url,
+        backgroundGif: backgroundGif.url,
+        slug,
+      } as Brand)
+  );
+  const showcases = data.page.homepage.showcase.map(
+    ({ id, title, videos }) =>
+      ({
+        id,
+        title,
+        videos: videos.map(
+          ({ id, videoInfo, videoType }) =>
+            ({
+              id,
+              type: videoType,
+              slug: videoInfo.slug,
+              thumbnailX: videoInfo.thumbnails.horizontal.url,
+              thumbnailY: videoInfo.thumbnails.vertical.url,
+            } as Video)
+        ),
+      } as VideoList)
+  );
 
   return (
     <AuthGuard>
       <PageContainer headTitle="Disney+ clone | Home">
+        <Link href="/home">
+          <a className="w-[100px] mx-auto my-4">
+            <Logo className="lg:hidden" />
+          </a>
+        </Link>
+
         <BannerSwiper slides={slides} />
+
+        <Brands brands={brands} />
+
+        <Showcase videosList={showcases} />
       </PageContainer>
     </AuthGuard>
   );
