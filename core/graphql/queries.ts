@@ -5,7 +5,7 @@ export const HOMEPAGE = gql`
     page(where: { slug: "home" }) {
       homepage {
         slider {
-          videos {
+          videos(first: 15) {
             id
             videoType
             videoInfo {
@@ -25,8 +25,28 @@ export const HOMEPAGE = gql`
             }
           }
         }
+        showcase {
+          id
+          title
+          videos {
+            id
+            videoType
+            videoInfo {
+              slug
+              thumbnails {
+                horizontal {
+                  url
+                }
+                vertical {
+                  url
+                }
+              }
+            }
+          }
+        }
         brands {
           id
+          name
           slug
           brandLogo {
             url
