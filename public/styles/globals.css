@@ -18,3 +18,8 @@ h6 {
 .swiper {
   overflow: visible !important;
 }
+
+.swiper-button-disabled {
+  opacity: 0;
+  pointer-events: none;
+}
