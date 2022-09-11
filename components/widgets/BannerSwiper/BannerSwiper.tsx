@@ -1,14 +1,14 @@
-import { CaretLeft, CaretRight } from "phosphor-react";
+import { BannerSwiperProps } from "@core/types";
+import Image from "next/image";
 import { Autoplay, Navigation, Pagination } from "swiper";
 import "swiper/css/bundle";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { SliderCaret } from "../SliderCaret";
 
-export const BannerSwiper = () => {
+export const BannerSwiper = ({ slides }: BannerSwiperProps) => {
   return (
     <div className="relative w-full flex">
-      <div className="banner-swiper-prev absolute top-0 left-0 w-16 h-16 flex justify-center items-center hover:bg-black hover:bg-opacity-40 z-10">
-        <CaretLeft />
-      </div>
+      <SliderCaret variant="left" />
 
       <Swiper
         modules={[Autoplay, Navigation, Pagination]}
@@ -20,27 +20,43 @@ export const BannerSwiper = () => {
         }}
         pagination={{ clickable: true }}
         spaceBetween={50}
-        className="w-full h-16 overflow-visible"
+        className="w-full h-[350px] overflow-visible"
       >
-        <SwiperSlide className="bg-white w-4/5">Slide 1</SwiperSlide>
-        <SwiperSlide className="">
-          {({ isActive }) => (
-            <div
-              className={`${
-                isActive ? "" : "brightness-50"
-              } bg-blue-500 h-full`}
-            >
-              Current slide is {isActive ? "active" : "not active"}
-            </div>
-          )}
-        </SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
+        {slides.map((slide) => (
+          <SwiperSlide key={slide.id}>
+            {({ isActive }) => (
+              <div
+                className={`${
+                  !isActive && "brightness-50"
+                } relative h-full shadow-2xl transition-all duration-1000`}
+              >
+                <Image
+                  src={slide.imageUrl}
+                  alt={`${slide.title} banner`}
+                  layout="fill"
+                  className="object-cover object-top rounded-md"
+                />
+
+                <div
+                  className={`absolute top-1/2 left-12 -translate-y-1/2 w-1/3 aspect-video ${
+                    isActive
+                      ? "translate-x-0 opacity-100"
+                      : "translate-x-10 opacity-0"
+                  } transition-all duration-700 delay-200`}
+                >
+                  <Image
+                    src={slide.logo}
+                    alt={`${slide.title} logo`}
+                    layout="fill"
+                  />
+                </div>
+              </div>
+            )}
+          </SwiperSlide>
+        ))}
       </Swiper>
 
-      <div className="banner-swiper-next absolute top-0 right-0 w-16 h-16 flex justify-center items-center hover:bg-black hover:bg-opacity-40 z-10">
-        <CaretRight />
-      </div>
+      <SliderCaret variant="right" />
     </div>
   );
 };
