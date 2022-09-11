@@ -9,7 +9,7 @@ import { SliderCaret } from "../SliderCaret";
 export const BannerSwiper = ({ slides }: BannerSwiperProps) => {
   return (
     <div className="relative w-full flex">
-      <SliderCaret variant="left" />
+      <SliderCaret variant="left" className="banner-swiper-prev" />
 
       <Swiper
         modules={[Autoplay, Navigation, Pagination]}
@@ -21,7 +21,7 @@ export const BannerSwiper = ({ slides }: BannerSwiperProps) => {
         }}
         pagination={{ clickable: true }}
         spaceBetween={50}
-        className="w-full h-[350px] overflow-visible"
+        className="w-full aspect-video max-h-[400px] overflow-visible"
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
@@ -29,7 +29,7 @@ export const BannerSwiper = ({ slides }: BannerSwiperProps) => {
               <Link href={`/${slide.type}/${slide.slug}`}>
                 <a
                   className={`${
-                    !isActive && "brightness-50"
+                    !isActive && "brightness-50 pointer-events-none"
                   } relative block h-full hover:ring-2 hover:ring-white rounded-md shadow-2xl transition-all duration-1000`}
                 >
                   <Image
@@ -59,7 +59,7 @@ export const BannerSwiper = ({ slides }: BannerSwiperProps) => {
         ))}
       </Swiper>
 
-      <SliderCaret variant="right" />
+      <SliderCaret variant="right" className="banner-swiper-next" />
     </div>
   );
 };
