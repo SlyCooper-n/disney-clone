@@ -17,6 +17,7 @@ export type HomepageQuery = {
       slider: {
         videos: {
           id: string;
+          videoType: "movie" | "serie";
           videoInfo: {
             title: string;
             banner: {
@@ -140,4 +141,5 @@ export type Slide = {
   title: string;
   logo: string;
   slug: string;
+  type: "movies" | "series";
 };

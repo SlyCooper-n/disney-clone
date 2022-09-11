@@ -3,17 +3,21 @@ import { PageContainer } from "@components/layouts";
 import { BannerSwiper } from "@components/widgets";
 import { HOMEPAGE } from "@core/graphql";
 import { client } from "@core/services";
-import { HomepageQuery } from "@core/types";
+import { HomepageQuery, Slide } from "@core/types";
 import type { InferGetStaticPropsType } from "next";
 
 const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const slides = data.page.homepage.slider.videos.map(({ id, videoInfo }) => ({
-    id,
-    imageUrl: videoInfo.banner.url,
-    title: videoInfo.title,
-    slug: videoInfo.slug,
-    logo: videoInfo.videoLogo.url,
-  }));
+  const slides = data.page.homepage.slider.videos.map(
+    ({ id, videoInfo, videoType }) =>
+      ({
+        id,
+        imageUrl: videoInfo.banner.url,
+        title: videoInfo.title,
+        slug: videoInfo.slug,
+        logo: videoInfo.videoLogo.url,
+        type: videoType === "movie" ? "movies" : "series",
+      } as Slide)
+  );
 
   return (
     <AuthGuard>

@@ -7,6 +7,7 @@ export const HOMEPAGE = gql`
         slider {
           videos {
             id
+            videoType
             videoInfo {
               title
               banner {
