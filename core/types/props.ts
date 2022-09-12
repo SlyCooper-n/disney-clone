@@ -30,6 +30,16 @@ export interface PageContainerProps {
 export interface BrandsProps {
   brands: Brand[];
 }
+export interface DisplayVideosProps {
+  variant?: "brand" | "video";
+  title: string;
+  brandData?: {
+    name: string;
+    backgroundVideo: string;
+    backgroundImage: string;
+  };
+  videos: Video[];
+}
 export interface ShowcaseProps {
   videosList: VideoList[];
 }
