@@ -3,6 +3,7 @@ import { AuthProvider } from "firebase/auth";
 // * queries response
 export type BrandPageQuery = {
   brand: {
+    name: string;
     backgroundVideo: {
       url: string;
     };
@@ -10,6 +11,21 @@ export type BrandPageQuery = {
       url: string;
     };
   };
+  videos: {
+    id: string;
+    videoType: "movie" | "serie";
+    videoInfo: {
+      slug: string;
+      thumbnails: {
+        horizontal: {
+          url: string;
+        };
+        vertical: {
+          url: string;
+        };
+      };
+    };
+  }[];
 };
 export type HomepageQuery = {
   page: {

@@ -63,11 +63,27 @@ export const HOMEPAGE = gql`
 export const BRAND_PAGE = gql`
   query brandPage($slug: String!) {
     brand(where: { slug: $slug }) {
+      name
       backgroundVideo {
         url
       }
       backgroundImage {
         url
+      }
+    }
+    videos(where: { videoInfo: { brand: { slug: $slug } } }) {
+      id
+      videoType
+      videoInfo {
+        slug
+        thumbnails {
+          horizontal {
+            url
+          }
+          vertical {
+            url
+          }
+        }
       }
     }
   }
