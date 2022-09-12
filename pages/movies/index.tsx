@@ -1,10 +1,24 @@
+import { PageContainer } from "@components/layouts";
+import { DisplayVideos } from "@components/modules";
 import { VIDEOS_BY_TYPE } from "@core/graphql";
 import { client } from "@core/services";
 import { VideosByTypeQuery } from "@core/types";
 import { InferGetStaticPropsType } from "next";
 
 const Movies = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return <div />;
+  const videos = data.map(({ id, videoInfo: { genre, slug, thumbnails } }) => ({
+    id,
+    slug,
+    type: "movie" as "movie",
+    thumbnailX: thumbnails.horizontal.url,
+    thumbnailY: thumbnails.vertical.url,
+  }));
+
+  return (
+    <PageContainer headTitle="Disney+ clone | Movies">
+      <DisplayVideos title="Movies" videos={videos} />
+    </PageContainer>
+  );
 };
 
 export default Movies;
