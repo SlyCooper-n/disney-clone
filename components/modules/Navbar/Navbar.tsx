@@ -3,17 +3,22 @@ import { Logo } from "@components/widgets";
 import { useProfile } from "@core/hooks";
 import { menuOptions } from "@core/utils";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useRef } from "react";
 
 export const Navbar = () => {
   const { selectedProfile } = useProfile();
   const navbarRef = useRef<HTMLDivElement>(null);
 
+  const { pathname } = useRouter();
+
   return (
     <>
       <nav
         ref={navbarRef}
-        className="fixed bottom-0 lg:bottom-auto lg:top-0 right-0 left-0 py-2 lg:py-4 px-8 flex lg:justify-between items-center bg-base-200 lg:bg-gradient-to-b lg:from-black lg:to-[#00000031] lg:shadow-2xl z-20"
+        className={`fixed bottom-0 lg:bottom-auto lg:top-0 right-0 left-0 py-2 lg:py-4 px-8 flex lg:justify-between items-center bg-base-200 lg:bg-gradient-to-b lg:from-black lg:to-[#00000031] lg:shadow-2xl z-20 ${
+          pathname.includes("/brands") && "bg-transparent"
+        }`}
       >
         <Link href="/home">
           <a className="mr-12 hidden lg:block">
