@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+import { DisplayVideoDetails } from "@components/modules";
 import { VIDEO_BY_SLUG } from "@core/graphql";
 import { client } from "@core/services";
 import { VideoBySlugQuery } from "@core/types";
@@ -9,7 +10,7 @@ import {
 } from "next";
 
 const Serie = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return <div />;
+  return <DisplayVideoDetails videoID={data.id} videoInfo={data.videoInfo} />;
 };
 
 export default Serie;
