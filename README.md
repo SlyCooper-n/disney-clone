@@ -112,7 +112,7 @@ Testing
 ## :camera: Screenshots
 
 <img alt="homepage screenshot" src="./_docs/home.png" />
-<img alt="homepage screenshot" src="./_docs/mobile-home.jpg" />
+<img alt="homepage screenshot" src="./_docs/mobile-home.jpg" style="width: 40%;" />
 <img alt="homepage screenshot" src="./_docs/movies.png" />
 <img alt="homepage screenshot" src="./_docs/app-running.gif" />
 
