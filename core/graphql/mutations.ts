@@ -67,3 +67,25 @@ export const PUBLISH_ACCOUNT_AND_PROFILE = gql`
     }
   }
 `;
+
+export const ADD_TO_WATCHLIST = gql`
+  mutation ConnectVideo($profileID: ID!, $videoID: ID!) {
+    updateProfile(
+      where: { id: $profileID }
+      data: { watchlist: { connect: { where: { id: $videoID } } } }
+    ) {
+      id
+    }
+  }
+`;
+
+export const REMOVE_FROM_WATCHLIST = gql`
+  mutation DisconnectVideo($profileID: ID!, $videoID: ID!) {
+    updateProfile(
+      where: { id: $profileID }
+      data: { watchlist: { disconnect: { id: $videoID } } }
+    ) {
+      id
+    }
+  }
+`;
