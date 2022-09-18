@@ -20,12 +20,21 @@ const Video = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
         <title>Disney+ clone | Playing video</title>
       </Head>
 
-      <button onClick={() => router.back()} className="absolute top-4 left-4">
+      <button
+        onClick={() => router.back()}
+        className="absolute top-4 left-4 z-20"
+      >
         <ArrowLeft size={24} weight="bold" />
       </button>
 
-      {/* eslint-disable-next-line react/no-unknown-property */}
-      <video src={data.mp4[0].url} autoPlay controls />
+      <video
+        src={data.mp4[0].url}
+        autoPlay
+        // eslint-disable-next-line react/no-unknown-property
+        controls
+        // eslint-disable-next-line react/no-unknown-property
+        onEnded={() => router.back()}
+      />
     </div>
   );
 };
