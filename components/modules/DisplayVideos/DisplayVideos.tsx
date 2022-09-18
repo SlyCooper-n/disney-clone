@@ -1,6 +1,7 @@
 import { VisuallyHidden } from "@components/radixUI";
 import { Card } from "@components/widgets";
 import { DisplayVideosProps } from "@core/types";
+import Image from "next/image";
 import { useState } from "react";
 
 export const DisplayVideos = ({
@@ -45,14 +46,26 @@ export const DisplayVideos = ({
   }
 
   return (
-    <main>
+    <main className="mb-12">
       <h2 className="my-8 text-4xl text-white">{title}</h2>
 
-      <div className="grid grid-cols-4 gap-4">
-        {videos.map((video) => (
-          <Card key={video.id} videoData={video} />
-        ))}
-      </div>
+      {videos.some((video) => video.id) ? (
+        <div className="grid grid-cols-4 gap-4">
+          {videos.map((video) => (
+            <Card key={video.id} videoData={video} />
+          ))}
+        </div>
+      ) : (
+        <div className="h-[calc(100vh-12rem)] flex flex-col justify-center items-center gap-8 text-center">
+          <Image
+            src="/icons/undraw_handcrafts_bookmark.svg"
+            alt="bookmark-icon"
+            width={64}
+            height={64}
+          />
+          Your watchlist is empty. Search and save videos for later!
+        </div>
+      )}
     </main>
   );
 };
