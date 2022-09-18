@@ -2,19 +2,27 @@ import { useQuery } from "@apollo/client";
 import { PageContainer } from "@components/layouts";
 import { VisuallyHidden } from "@components/radixUI";
 import { Loading } from "@components/widgets";
-import { IS_IN_WATCHLIST } from "@core/graphql";
-import { useProfile } from "@core/hooks";
+import {
+  ADD_TO_WATCHLIST,
+  IS_IN_WATCHLIST,
+  PUBLISH_ACCOUNT_AND_PROFILE,
+  REMOVE_FROM_WATCHLIST,
+} from "@core/graphql";
+import { useAuth, useProfile } from "@core/hooks";
+import { client } from "@core/services";
 import { DisplayVideoDetailsProps, IsInWatchlistQuery } from "@core/types";
 import Image from "next/image";
 import Link from "next/link";
 import { Check, FilmStrip, Play, Plus } from "phosphor-react";
+import toast from "react-hot-toast";
 
 export const DisplayVideoDetails = ({
   videoID,
   videoInfo,
 }: DisplayVideoDetailsProps) => {
+  const { account } = useAuth();
   const { selectedProfile } = useProfile();
-  const { data, loading, error, refetch } = useQuery<IsInWatchlistQuery>(
+  const { data, loading, refetch } = useQuery<IsInWatchlistQuery>(
     IS_IN_WATCHLIST,
     {
       variables: {
@@ -24,7 +32,43 @@ export const DisplayVideoDetails = ({
     }
   );
 
-  const isInWatchlist = data?.profile.watchlist[0]?.id ?? null;
+  const isInWatchlist = data?.profile.watchlist[0]?.id ? true : false;
+
+  async function handleWatchlist() {
+    switch (isInWatchlist) {
+      case true:
+        await client.mutate({
+          mutation: REMOVE_FROM_WATCHLIST,
+          variables: {
+            profileID: selectedProfile?.id,
+            videoID,
+          },
+        });
+        toast.success(`${videoInfo.title} removed from watchlist`);
+        break;
+
+      case false:
+        await client.mutate({
+          mutation: ADD_TO_WATCHLIST,
+          variables: {
+            profileID: selectedProfile?.id,
+            videoID,
+          },
+        });
+        toast.success(`${videoInfo.title} added to watchlist`);
+        break;
+    }
+
+    // hygraph mutation to publish the new modification
+    await client.mutate({
+      mutation: PUBLISH_ACCOUNT_AND_PROFILE,
+      variables: {
+        firestoreId: account?.id,
+      },
+    });
+
+    refetch();
+  }
 
   return (
     <>
@@ -88,7 +132,10 @@ export const DisplayVideoDetails = ({
             </Link>
 
             <div className="flex gap-8 lg:gap-4">
-              <button className="relative p-1 flex flex-col justify-center items-center bg-black border border-white rounded-full hover:brightness-75 transition-all">
+              <button
+                onClick={handleWatchlist}
+                className="relative p-1 flex flex-col justify-center items-center bg-black border border-white rounded-full hover:brightness-75 transition-all"
+              >
                 {loading && <Loading />}
 
                 {!loading &&
