@@ -22,14 +22,18 @@
 
 ## Table of Contents
 
-- [Table of Contents](#table-of-contents)
-- [General Information](#pushpin-general-information)
-- [Technologies I Used](#hammer-technologies-i-used)
-- [Features](#sparkles-features)
-  - [Curious to see what is coming next?](#eye-curious-to-see-what-is-coming-next)
-- [Screenshots](#camera-screenshots)
-- [Running this project](#rocket-running-this-project)
-  - [Thinking of contributing to the project?](#brain-thinking-of-contributing-to-the-project)
+- [Disney+ clone](#disney-clone)
+  - [Table of Contents](#table-of-contents)
+  - [:pushpin: General Information](#pushpin-general-information)
+  - [:hammer: Technologies I Used](#hammer-technologies-i-used)
+  - [:sparkles: Features](#sparkles-features)
+    - [:eye: Curious to see what is coming next?](#eye-curious-to-see-what-is-coming-next)
+  - [:camera: Screenshots](#camera-screenshots)
+  - [:rocket: Running this project](#rocket-running-this-project)
+    - [:brain: Thinking of contributing to the project?](#brain-thinking-of-contributing-to-the-project)
+  - [:heavy_check_mark: Project Status](#heavy_check_mark-project-status)
+  - [:white_heart: Acknowledgement](#white_heart-acknowledgement)
+  - [:memo: License & Contact](#memo-license--contact)
 <!-- - [Usage](#question-usage) -->
 - [Project Status](#heavy_check_mark-project-status)
 - [Acknowledgement](#white_heart-acknowledgement)
@@ -39,7 +43,7 @@
 
 One more Disney+ clone is alive now!
 
-I didn't want to build another big-company website copy but when I saw [Ania's video](https://www.youtube.com/watch?v=u1ovHJXkPBY) and the opportunity to learn and practice different concepts on my way there, I had to do it. So, this project was made exclusively to practice GraphQL on the client side and managing content with Hygraph. 
+I didn't want to build another big-company website copy but when I saw [Ania's video](https://www.youtube.com/watch?v=u1ovHJXkPBY) and the opportunity to learn and practice different concepts on my way there, I had to do it. So, this project was made exclusively to practice GraphQL on the client side and managing content with Hygraph.
 
 > For more information about my dev journey, consider visiting my [LinkedIn](https://linkedin.com/in/gabriel-vs-frasao).
 
@@ -107,7 +111,10 @@ Testing
 
 ## :camera: Screenshots
 
-<img alt="homepage screenshot" src="./__docs/home.png" />
+<img alt="homepage screenshot" src="./_docs/home.png" />
+<img alt="homepage screenshot" src="./_docs/mobile-home.png" />
+<img alt="homepage screenshot" src="./_docs/movies.png" />
+<img alt="homepage screenshot" src="./_docs/app-running.gif" />
 
 ## :rocket: Running this project
 
