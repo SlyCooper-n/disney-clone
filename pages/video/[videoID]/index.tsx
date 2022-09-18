@@ -7,9 +7,27 @@ import {
   GetStaticPropsContext,
   InferGetStaticPropsType,
 } from "next";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { ArrowLeft } from "phosphor-react";
 
 const Video = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return <div />;
+  const router = useRouter();
+
+  return (
+    <div className="w-screen h-screen flex justify-center items-center bg-black">
+      <Head>
+        <title>Disney+ clone | Playing video</title>
+      </Head>
+
+      <button onClick={() => router.back()} className="absolute top-4 left-4">
+        <ArrowLeft size={24} weight="bold" />
+      </button>
+
+      {/* eslint-disable-next-line react/no-unknown-property */}
+      <video src={data.mp4[0].url} autoPlay controls />
+    </div>
+  );
 };
 
 export default Video;
@@ -30,7 +48,9 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { data } = await client.query<{ videos: { id: string }[] }>({
+  const { data } = await client.query<{
+    videos: { id: string }[];
+  }>({
     query: gql`
       query {
         videos {
@@ -40,12 +60,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
     `,
   });
 
-  const parsedIDs = data.videos.map((video) => ({
+  const parsedSlugs = data.videos.map((video) => ({
     params: { videoID: video.id },
   }));
 
   return {
-    paths: parsedIDs,
+    paths: parsedSlugs,
     fallback: "blocking",
   };
 };
