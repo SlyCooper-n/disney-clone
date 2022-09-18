@@ -8,13 +8,15 @@ import { InferGetStaticPropsType } from "next";
 const Originals = ({
   data,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const videos = data.map(({ id, videoInfo: { genre, slug, thumbnails } }) => ({
-    id,
-    slug,
-    type: "movie" as "movie",
-    thumbnailX: thumbnails.horizontal.url,
-    thumbnailY: thumbnails.vertical.url,
-  }));
+  const videos = data.map(
+    ({ id, videoType, videoInfo: { slug, thumbnails } }) => ({
+      id,
+      slug,
+      type: videoType,
+      thumbnailX: thumbnails.horizontal.url,
+      thumbnailY: thumbnails.vertical.url,
+    })
+  );
 
   return (
     <PageContainer headTitle="Disney+ clone | Originals">
