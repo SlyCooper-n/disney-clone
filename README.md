@@ -6,14 +6,12 @@
 
 # Disney+ clone
 
-:construction: In progress :construction:
-
 [![My Github](https://img.shields.io/badge/Gabe%20Frasz-disney--clone-gold?style=flat-square)](https://github.com/SlyCooper-n)
 [![Repo version](https://img.shields.io/github/package-json/v/slycooper-n/disney-clone?style=flat-square)](https://github.com/SlyCooper-n/disney-clone/blob/main/package.json)
 [![Github issues](https://img.shields.io/github/issues/SlyCooper-n/disney-clone?color=red&style=flat-square)](https://github.com/SlyCooper-n/disney-clone/issues)
 [![GitHub license](https://img.shields.io/github/license/SlyCooper-n/disney-clone?style=flat-square)](https://github.com/SlyCooper-n/disney-clone/blob/main/LICENSE)
 [![Github commit](https://img.shields.io/github/last-commit/SlyCooper-n/disney-clone?color=blue&style=flat-square)](https://github.com/SlyCooper-n/disney-clone/commits/main)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 
 </div>
 
@@ -39,11 +37,9 @@
 
 ## :pushpin: General Information
 
-Provide general information about your project here.
+One more Disney+ clone is alive now!
 
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
+I didn't want to build another big-company website copy but when I saw [Ania's video](https://www.youtube.com/watch?v=u1ovHJXkPBY) and the opportunity to learn and practice different concepts on my way there, I had to do it. So, this project was made exclusively to practice GraphQL on the client side and managing content with Hygraph. 
 
 > For more information about my dev journey, consider visiting my [LinkedIn](https://linkedin.com/in/gabriel-vs-frasao).
 
@@ -54,8 +50,12 @@ Provide general information about your project here.
 Base tools
 </summary>
 
-- [Next.js](https://nextjs.org/) v
-- [TypeScript](https://www.typescriptlang.org/) v
+- [React](https://reactjs.org/) v18.2.0
+- [Next.js](https://nextjs.org/) v12.2.5
+- [TypeScript](https://www.typescriptlang.org/) v4.8.2
+- [Firebase](https://firebase.google.com/) v9.9.4
+- [Hygraph](https://hygraph.com/)
+- [Apollo Client](https://www.apollographql.com/) v3.6.9
 
 </details>
 
@@ -64,8 +64,8 @@ Base tools
 Styling
 </summary>
 
-- [Tailwind](https://tailwindcss.com/) v
-- [DaisyUI](https://daisyui.com/) v
+- [Tailwind](https://tailwindcss.com/) v3.1.8
+- [DaisyUI](https://daisyui.com/) v2.24.0
 - [RadixUI](https://www.radix-ui.com/) (version per component)
 
 </details>
@@ -75,7 +75,7 @@ Styling
 Linters and Formatters
 </summary>
 
-- [ESLint](https://eslint.org/) v
+- [ESLint](https://eslint.org/) v8.23.0
 - [Prettier](https://prettier.io/) (VS Code extension)
 - [.editorConfig](https://editorconfig.org/) (VS Code extension)
 
@@ -86,26 +86,28 @@ Linters and Formatters
 Testing
 </summary>
 
-- [Vitest](https://vitest.dev/) v
+- [Vitest](https://vitest.dev/) v0.22.1
 - [React testing library](https://testing-library.com/docs/react-testing-library/intro/)
-  - jest-dom v
-  - react v
-  - user-event v
-- [Cypress](https://www.cypress.io/) v
+  - jest-dom v5.16.5
+  - react v13.3.0
+  - user-event v14.4.3
+- [Cypress](https://www.cypress.io/) v10.7.0
 
 </details>
 
 ## :sparkles: Features
 
-- [x]
+- [x] Authentication with Google
+- [x] Create up to 4 profiles per account
+- [x] Add/remove videos from watchlist
 
 ### :eye: Curious to see what is coming next?
 
-[Stay tuned right here](https://github.com/users/SlyCooper-n/projects/00)
+[Stay tuned right here](https://github.com/users/SlyCooper-n/projects/04)
 
 ## :camera: Screenshots
 
-<!-- <img alt="" src="" /> -->
+<img alt="homepage screenshot" src="./__docs/home.png" />
 
 ## :rocket: Running this project
 
@@ -136,17 +138,9 @@ npm run dev
 
 Clone the repo as shown above :arrow_up: and follow [this little guide](https://github.com/SlyCooper-n/disney-clone/blob/main/_docs/CONTRIBUTING.md)
 
-<!--
-## :question: Usage
-
-How does one go about using it? Provide various use cases and code examples here.
-
-`write-your-code-here`
--->
-
 ## :heavy_check_mark: Project Status
 
-Project is: in progress / complete / no longer being worked on. If you are no longer working on it, provide reasons why.
+Project is: In Progress :construction:
 
 | Status | Project |
 | ------ | ------- |
@@ -154,8 +148,8 @@ Project is: in progress / complete / no longer being worked on. If you are no lo
 
 ## :white_heart: Acknowledgement
 
-- ***disney-clone*** was based and inspired on [this one](if any).
-- Many thanks to [they](if any).
+- ***disney-clone*** was based and inspired on [this one](https://github.com/kubowania/disney-clone-graphcms).
+- Many thanks to [Ania Kubów](https://github.com/kubowania).
 
 ## :memo: License & Contact
 
