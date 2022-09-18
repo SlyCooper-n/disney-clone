@@ -84,8 +84,24 @@ export type HomepageQuery = {
     };
   };
 };
-export type OriginalsVideosQuery = VideosByTypeQuery;
-
+export type OriginalsVideosQuery = {
+  videos: {
+    id: string;
+    videoType: "movie" | "serie";
+    videoInfo: {
+      thumbnails: {
+        horizontal: {
+          url: string;
+        };
+        vertical: {
+          url: string;
+        };
+      };
+      slug: string;
+      genre: string[];
+    };
+  }[];
+};
 export type ProfileQuery = {
   profile: Profile;
 };
@@ -96,11 +112,12 @@ export type VideoByIDQuery = {
   video: {
     mp4: {
       url: string;
-    };
+    }[];
   };
 };
 export type VideoBySlugQuery = {
   videos: {
+    id: string;
     videoInfo: {
       title: string;
       description: string;
@@ -112,6 +129,7 @@ export type VideoBySlugQuery = {
       videoLogo: {
         url: string;
       };
+      slug: string;
     };
   }[];
 };
@@ -131,6 +149,34 @@ export type VideosByTypeQuery = {
       genre: string[];
     };
   }[];
+};
+export type VideosByWatchlistQuery = {
+  profile: {
+    watchlist: {
+      id: string;
+      videoType: "movie" | "serie";
+      videoInfo: {
+        thumbnails: {
+          horizontal: {
+            url: string;
+          };
+          vertical: {
+            url: string;
+          };
+        };
+        slug: string;
+      };
+    }[];
+  };
+};
+export type IsInWatchlistQuery = {
+  profile: {
+    watchlist:
+      | {
+          id?: string;
+        }[]
+      | [];
+  };
 };
 
 // * mutations response

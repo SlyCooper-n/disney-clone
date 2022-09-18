@@ -91,7 +91,7 @@ export const BRAND_PAGE = gql`
 
 export const VIDEOS_BY_TYPE = gql`
   query Videos($videoType: VideoType!) {
-    videos(where: { videoType: $videoType }) {
+    videos(where: { videoType: $videoType }, first: 50) {
       id
       videoInfo {
         thumbnails {
@@ -111,8 +111,9 @@ export const VIDEOS_BY_TYPE = gql`
 
 export const ORIGINALS_VIDEOS = gql`
   query Originals($isOriginal: Boolean!) {
-    videos(where: { videoInfo: { original: $isOriginal } }) {
+    videos(where: { videoInfo: { original: $isOriginal } }, first: 50) {
       id
+      videoType
       videoInfo {
         thumbnails {
           horizontal {
@@ -132,6 +133,7 @@ export const ORIGINALS_VIDEOS = gql`
 export const VIDEO_BY_SLUG = gql`
   query Video($videoType: VideoType!, $slug: String!) {
     videos(where: { videoType: $videoType, videoInfo: { slug: $slug } }) {
+      id
       videoInfo {
         title
         description
@@ -143,6 +145,7 @@ export const VIDEO_BY_SLUG = gql`
         videoLogo {
           url
         }
+        slug
       }
     }
   }
@@ -153,6 +156,28 @@ export const VIDEO_BY_ID = gql`
     video(where: { id: $id }) {
       mp4 {
         url
+      }
+    }
+  }
+`;
+
+export const VIDEOS_BY_WATCHLIST = gql`
+  query Watchlist($profileID: ID!) {
+    profile(where: { id: $profileID }) {
+      watchlist(first: 50) {
+        id
+        videoType
+        videoInfo {
+          thumbnails {
+            horizontal {
+              url
+            }
+            vertical {
+              url
+            }
+          }
+          slug
+        }
       }
     }
   }
@@ -173,6 +198,16 @@ export const PROFILE = gql`
     profile(where: { id: $id }) {
       username
       avatarUrl
+    }
+  }
+`;
+
+export const IS_IN_WATCHLIST = gql`
+  query Watchlist($profileID: ID!, $videoTitle: String!) {
+    profile(where: { id: $profileID }) {
+      watchlist(where: { videoInfo: { title: $videoTitle } }) {
+        id
+      }
     }
   }
 `;

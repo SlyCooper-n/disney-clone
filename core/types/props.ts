@@ -30,6 +30,18 @@ export interface PageContainerProps {
 export interface BrandsProps {
   brands: Brand[];
 }
+export interface DisplayVideoDetailsProps {
+  videoInfo: {
+    title: string;
+    banner: { url: string };
+    videoLogo: { url: string };
+    releaseYear: number;
+    genre: string[];
+    slug: string;
+    description: string;
+  };
+  videoID: string;
+}
 export interface DisplayVideosProps {
   variant?: "brand" | "video";
   title: string;
