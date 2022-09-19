@@ -17,3 +17,12 @@ export const bannersVariants: Variants = {
     transitionDelay: "3s",
   },
 };
+
+export const mobileMenuVariants: Variants = {
+  show: {
+    opacity: 1,
+  },
+  hidden: {
+    opacity: 0,
+  },
+};
