@@ -1,16 +1,42 @@
-import { Avatar, Dropdown } from "@components/radixUI";
+import { useQuery } from "@apollo/client";
+import { Avatar, Dialog, Dropdown } from "@components/radixUI";
+import { Divider } from "@components/radixUI/";
 import { Logo } from "@components/widgets";
-import { useProfile } from "@core/hooks";
-import { menuOptions } from "@core/utils";
+import { PROFILES } from "@core/graphql";
+import { useAuth, useDialog, useProfile } from "@core/hooks";
+import { ProfilesQuery } from "@core/types";
+import { menuOptions, mobileMenuVariants } from "@core/utils";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useRef } from "react";
+import { parseCookies } from "nookies";
+import { PlusCircle } from "phosphor-react";
+import { useRef, useState } from "react";
 
 export const Navbar = () => {
-  const { selectedProfile } = useProfile();
-  const navbarRef = useRef<HTMLDivElement>(null);
-
+  const { signUserOut } = useAuth();
+  const { selectedProfile, selectProfile } = useProfile();
   const { pathname } = useRouter();
+  const { dialogOpen, toggleDialog, addProfile } = useDialog();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navbarRef = useRef<HTMLDivElement>(null);
+  const { data, refetch } = useQuery<ProfilesQuery>(PROFILES, {
+    variables: {
+      firestoreId: parseCookies()["disney_clone_account_id"],
+    },
+  });
+
+  function handleMobileMenu() {
+    setIsMobileMenuOpen((prev) => !prev);
+  }
+
+  async function refetchProfiles() {
+    await refetch();
+  }
+
+  const filteredProfiles =
+    data?.profiles.filter((profile) => profile.id !== selectedProfile?.id) ??
+    [];
 
   return (
     <>
@@ -29,7 +55,7 @@ export const Navbar = () => {
           </a>
         </Link>
 
-        {/* mobile menu */}
+        {/* mobile navbar */}
         <ul className="flex-1 flex lg:hidden justify-between items-center gap-8">
           {menuOptions
             .filter((opt) => opt.isMobile)
@@ -41,14 +67,16 @@ export const Navbar = () => {
               </li>
             ))}
 
-          <Avatar
-            src={selectedProfile?.avatarUrl!}
-            placeholder={selectedProfile?.username[0]!}
-            className="w-8"
-          />
+          <button onClick={handleMobileMenu}>
+            <Avatar
+              src={selectedProfile?.avatarUrl!}
+              placeholder={selectedProfile?.username[0]!}
+              className="w-8"
+            />
+          </button>
         </ul>
 
-        {/* desktop menu */}
+        {/* desktop navbar */}
         <ul className="mr-auto hidden lg:flex gap-8">
           {menuOptions.map((opt) => (
             <li key={opt.name}>
@@ -65,8 +93,74 @@ export const Navbar = () => {
           ))}
         </ul>
 
+        {/* desktop only */}
         <Dropdown ref={navbarRef.current!} />
       </nav>
+
+      {/* mobile menu */}
+      <motion.div
+        variants={mobileMenuVariants}
+        animate={isMobileMenuOpen ? "show" : "hidden"}
+        className="fixed top-0 left-0 w-screen h-[calc(100vh-48px)] p-2 bg-base-100 z-10"
+      >
+        <ul className="mb-4 flex gap-8 overflow-x-scroll">
+          {
+            filteredProfiles.map((profile) => (
+              <li key={profile.id} className="flex-shrink-0">
+                <button
+                  onClick={() => selectProfile(profile)}
+                  className="flex flex-col items-center gap-2"
+                >
+                  <Avatar
+                    src={profile.avatarUrl}
+                    placeholder={profile.username[0]}
+                    className="w-16"
+                  />
+
+                  <span className="text-xs font-semibold">
+                    {profile.username}
+                  </span>
+                </button>
+              </li>
+            ))!
+          }
+
+          {filteredProfiles.length < 3 && (
+            <li className="flex-shrink-0">
+              <Dialog
+                open={dialogOpen}
+                toggleDialog={toggleDialog}
+                title="Add profile"
+                description="Create a new profile here. Click add when you're done."
+                labelFields={[
+                  {
+                    label: "Username",
+                    inputName: "username",
+                    required: true,
+                  },
+                  { label: "Avatar url", inputName: "avatarUrl" },
+                ]}
+                submitButtonText="Add"
+                onSubmit={addProfile}
+                refetchData={refetchProfiles}
+              >
+                <button className="flex items-center gap-4 hover:cursor-pointer hover:brightness-125 transition-all">
+                  <PlusCircle size={48} weight="fill" />
+                  <span className="font-semibold">Add profile</span>
+                </button>
+              </Dialog>
+            </li>
+          )}
+        </ul>
+
+        <Link href="/profiles">
+          <a className="btn w-fit mx-auto flex">Edit profiles</a>
+        </Link>
+
+        <Divider className="w-full h-0.5 mx-auto my-4 bg-base-content bg-opacity-50" />
+
+        <button onClick={signUserOut}>Log Out</button>
+      </motion.div>
 
       {/* eslint-disable-next-line react/no-unknown-property */}
       <style jsx>{`
