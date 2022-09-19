@@ -1,3 +1,4 @@
+import { AuthGuard } from "@components/guards";
 import { PageContainer } from "@components/layouts";
 import { DisplayVideos } from "@components/modules";
 import { VIDEOS_BY_TYPE } from "@core/graphql";
@@ -15,9 +16,11 @@ const Series = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   }));
 
   return (
-    <PageContainer headTitle="Disney+ clone | Series">
-      <DisplayVideos title="Series" videos={videos} />
-    </PageContainer>
+    <AuthGuard>
+      <PageContainer headTitle="Disney+ clone | Series">
+        <DisplayVideos title="Series" videos={videos} />
+      </PageContainer>
+    </AuthGuard>
   );
 };
 

@@ -1,4 +1,5 @@
 import { useQuery } from "@apollo/client";
+import { AuthGuard } from "@components/guards";
 import { PageContainer } from "@components/layouts";
 import { DisplayVideos } from "@components/modules";
 import { Loading } from "@components/widgets";
@@ -31,9 +32,11 @@ const Watchlist = () => {
   );
 
   return (
-    <PageContainer headTitle="Disney+ clone | Watchlist">
-      <DisplayVideos title="Watchlist" videos={videos!} />
-    </PageContainer>
+    <AuthGuard>
+      <PageContainer headTitle="Disney+ clone | Watchlist">
+        <DisplayVideos title="Watchlist" videos={videos!} />
+      </PageContainer>
+    </AuthGuard>
   );
 };
 

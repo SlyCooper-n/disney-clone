@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+import { AuthGuard } from "@components/guards";
 import { VIDEO_BY_ID } from "@core/graphql";
 import { client } from "@core/services";
 import { VideoByIDQuery } from "@core/types";
@@ -15,27 +16,27 @@ const Video = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
 
   return (
-    <div className="w-screen h-screen flex justify-center items-center bg-black">
-      <Head>
-        <title>Disney+ clone | Playing video</title>
-      </Head>
-
-      <button
-        onClick={() => router.back()}
-        className="absolute top-4 left-4 z-20"
-      >
-        <ArrowLeft size={24} weight="bold" />
-      </button>
-
-      <video
-        src={data.mp4[0].url}
-        autoPlay
-        // eslint-disable-next-line react/no-unknown-property
-        controls
-        // eslint-disable-next-line react/no-unknown-property
-        onEnded={() => router.back()}
-      />
-    </div>
+    <AuthGuard>
+      <div className="w-screen h-screen flex justify-center items-center bg-black">
+        <Head>
+          <title>Disney+ clone | Playing video</title>
+        </Head>
+        <button
+          onClick={() => router.back()}
+          className="absolute top-4 left-4 z-20"
+        >
+          <ArrowLeft size={24} weight="bold" />
+        </button>
+        <video
+          src={data.mp4[0].url}
+          autoPlay
+          // eslint-disable-next-line react/no-unknown-property
+          controls
+          // eslint-disable-next-line react/no-unknown-property
+          onEnded={() => router.back()}
+        />
+      </div>
+    </AuthGuard>
   );
 };
 

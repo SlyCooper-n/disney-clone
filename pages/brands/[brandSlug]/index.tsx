@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+import { AuthGuard } from "@components/guards";
 import { PageContainer } from "@components/layouts";
 import { DisplayVideos } from "@components/modules";
 import { BRAND_PAGE } from "@core/graphql";
@@ -27,14 +28,16 @@ const Brand = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   );
 
   return (
-    <PageContainer headTitle={`Disney+ clone | ${data.brand.name}`}>
-      <DisplayVideos
-        variant="brand"
-        title="Disney"
-        brandData={brand}
-        videos={videos}
-      />
-    </PageContainer>
+    <AuthGuard>
+      <PageContainer headTitle={`Disney+ clone | ${data.brand.name}`}>
+        <DisplayVideos
+          variant="brand"
+          title="Disney"
+          brandData={brand}
+          videos={videos}
+        />
+      </PageContainer>
+    </AuthGuard>
   );
 };
 

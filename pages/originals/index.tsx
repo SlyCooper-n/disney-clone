@@ -1,3 +1,4 @@
+import { AuthGuard } from "@components/guards";
 import { PageContainer } from "@components/layouts";
 import { DisplayVideos } from "@components/modules";
 import { ORIGINALS_VIDEOS } from "@core/graphql";
@@ -19,9 +20,11 @@ const Originals = ({
   );
 
   return (
-    <PageContainer headTitle="Disney+ clone | Originals">
-      <DisplayVideos title="Originals" videos={videos} />
-    </PageContainer>
+    <AuthGuard>
+      <PageContainer headTitle="Disney+ clone | Originals">
+        <DisplayVideos title="Originals" videos={videos} />
+      </PageContainer>
+    </AuthGuard>
   );
 };
 

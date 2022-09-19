@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+import { AuthGuard } from "@components/guards";
 import { DisplayVideoDetails } from "@components/modules";
 import { VIDEO_BY_SLUG } from "@core/graphql";
 import { client } from "@core/services";
@@ -10,7 +11,11 @@ import {
 } from "next";
 
 const Serie = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return <DisplayVideoDetails videoID={data.id} videoInfo={data.videoInfo} />;
+  return (
+    <AuthGuard>
+      <DisplayVideoDetails videoID={data.id} videoInfo={data.videoInfo} />
+    </AuthGuard>
+  );
 };
 
 export default Serie;
