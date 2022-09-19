@@ -85,6 +85,11 @@ export interface DialogProps {
   refetchData?: () => Promise<void>;
   children: ReactNode | ReactNode[];
 }
+export interface DividerProps {
+  orientation?: "horizontal" | "vertical";
+  decorative?: boolean;
+  className?: string;
+}
 export interface LoadingProps {
   page?: boolean;
   size?: number;
