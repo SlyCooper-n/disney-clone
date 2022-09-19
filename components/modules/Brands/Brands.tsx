@@ -3,7 +3,7 @@ import { BrandsProps } from "@core/types";
 
 export const Brands = ({ brands }: BrandsProps) => {
   return (
-    <section className="mt-12 flex justify-between gap-4">
+    <section className="mt-12 flex justify-between gap-1 sm:gap-4">
       {brands.map((brand) => (
         <Card key={brand.id} variant="brand" brandData={brand} />
       ))}

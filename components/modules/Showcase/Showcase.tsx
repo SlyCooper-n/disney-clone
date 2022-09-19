@@ -23,7 +23,7 @@ export const Showcase = ({ videosList }: ShowcaseProps) => {
                 prevEl: `.showcase-${i}-swiper-prev`,
                 nextEl: `.showcase-${i}-swiper-next`,
               }}
-              spaceBetween={16}
+              spaceBetween={12}
               slidesPerView={4}
               slidesPerGroup={4}
               className="w-full overflow-visible"
