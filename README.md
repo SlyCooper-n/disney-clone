@@ -34,10 +34,6 @@
   - [:heavy_check_mark: Project Status](#heavy_check_mark-project-status)
   - [:white_heart: Acknowledgement](#white_heart-acknowledgement)
   - [:memo: License & Contact](#memo-license--contact)
-<!-- - [Usage](#question-usage) -->
-- [Project Status](#heavy_check_mark-project-status)
-- [Acknowledgement](#white_heart-acknowledgement)
-- [License & Contact](#memo-license--contact)
 
 ## :pushpin: General Information
 
