@@ -21,8 +21,10 @@ export const bannersVariants: Variants = {
 export const mobileMenuVariants: Variants = {
   show: {
     opacity: 1,
+    pointerEvents: "auto",
   },
   hidden: {
     opacity: 0,
+    pointerEvents: "none",
   },
 };
