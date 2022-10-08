@@ -101,7 +101,7 @@ export const Navbar = () => {
       <motion.div
         variants={mobileMenuVariants}
         animate={isMobileMenuOpen ? "show" : "hidden"}
-        className="fixed top-0 left-0 w-screen h-[calc(100vh-48px)] p-2 bg-base-100 z-10"
+        className="fixed top-0 left-0 w-screen h-[calc(100vh-48px)] p-2 bg-base-100 z-10 lg:hidden"
       >
         <ul className="mb-4 flex gap-8 overflow-x-scroll">
           {
