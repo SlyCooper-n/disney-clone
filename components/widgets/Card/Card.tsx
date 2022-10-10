@@ -11,11 +11,15 @@ export const Card = ({
   if (variant === "brand" && brandData) {
     return (
       <Link href={`/brands/${brandData.slug}`}>
-        <a className="group relative min-w-[50px] aspect-square sm:aspect-video flex justify-center items-center rounded-md border-2 border-zinc-700 shadow-xl bg-base-200 hover:ring-2 hover:ring-white hover:scale-105 transition-all duration-300">
+        <a
+          data-testid="brand-card-link"
+          className="group relative min-w-[50px] aspect-square sm:aspect-video flex justify-center items-center rounded-md border-2 border-zinc-700 shadow-xl bg-base-200 hover:ring-2 hover:ring-white hover:scale-105 transition-all duration-300"
+        >
           <video
             src={brandData.backgroundGif}
             autoPlay
             loop
+            data-testid="brand-card-video"
             className="w-full h-full object-cover rounded-md opacity-0 group-hover:opacity-100 transition-all duration-300"
           />
 
