@@ -16,11 +16,7 @@ describe("Card component", () => {
   });
 
   it("should render 'brand' variant", () => {
-    const { debug } = render(
-      <Card variant="brand" brandData={mockedBrandData} />
-    );
-    // eslint-disable-next-line testing-library/no-debugging-utils
-    debug();
+    render(<Card variant="brand" brandData={mockedBrandData} />);
 
     expect(screen.getByTestId("brand-card-link")).toContainElement(
       screen.getByTestId("brand-card-video")
