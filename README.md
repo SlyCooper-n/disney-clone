@@ -143,7 +143,7 @@ Clone the repo as shown above :arrow_up: and follow [this little guide](https://
 
 ## :heavy_check_mark: Project Status
 
-Project is: In Progress :construction:
+Project is: no longer being worked on, as its main features are ready and my focus is on other deeper projects.
 
 | Status | Project |
 | ------ | ------- |
