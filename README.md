@@ -147,7 +147,7 @@ Project is: no longer being worked on, as its main features are ready and my foc
 
 | Status | Project |
 | ------ | ------- |
-| ![Github deployments](https://img.shields.io/github/deployments/slycooper-n/disney-clone/production?label=vercel&logo=vercel&logoColor=white) | [disney-clone](https://disney-clone.vercel.app) |
+| ![Github deployments](https://img.shields.io/github/deployments/slycooper-n/disney-clone/production?label=vercel&logo=vercel&logoColor=white) | [disney-clone](https://disney-clone-green.vercel.app) |
 
 ## :white_heart: Acknowledgement
 
